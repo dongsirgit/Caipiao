@@ -30,9 +30,11 @@ public class caipiaoServlet extends HttpServlet {
 		String jsonResult = CaipiaoResultService.request(httpUrl, httpArg);
 		CaipiaoResultBean crb = JSON.parseObject(jsonResult,CaipiaoResultBean.class);
 		List<CaipiaoBean> list=  crb.getRetData().getData();
-		List<Integer> ONElist = CP_bj11x5.getONE(list);
-		System.out.println(ONElist.toString());
-		request.setAttribute("numONE", ONElist.toString());
+		if(list!=null && list.size()>0){
+			List<Integer> ONElist = CP_bj11x5.getONE(list);
+			System.out.println(ONElist.toString());
+			request.setAttribute("numONE", ONElist.toString());
+		}
 		request.setAttribute("list", list);
 		request.getRequestDispatcher("WEB-INF/CPresult.jsp").forward(request, response);
 	}

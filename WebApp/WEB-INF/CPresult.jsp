@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> 
 <%String basepath = request.getContextPath(); %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -10,27 +11,57 @@
 <title>结果</title>
 </head>
 <body>
-<div style="width: 500px">
+<div style="width: 800px">
 	<h3 style="color: red;">北京11选5   开奖结果：</h3>
 	<table border="1" cellspacing="0" width="100%">
 		<thead>
 			<tr>
 				<td align="center">期次</td>
-				<td align="center">开奖时间</td>
 				<td align="center">开奖号码</td>
+				<td align="center">一</td>
+				<td align="center">二</td>
+				<td align="center">三</td>
+				<td align="center">四</td>
+				<td align="center">五</td>
+				<td align="center">六</td>
+				<td align="center">七</td>
+				<td align="center">八</td>
+				<td align="center">九</td>
+				<td align="center">认一推荐号码</td>
 			</tr>
 		</thead>
+		<c:if test="${fn:substring(list[0].expect,8,10) != 85 }">
+			<tr>
+				<td align="center"><c:out value="${list[0].expect+1}"/></td>
+				<td align="center"></td>
+				<td align="center">&nbsp;</td>
+				<td align="center">&nbsp;</td>
+				<td align="center">&nbsp;</td>
+				<td align="center">&nbsp;</td>
+				<td align="center">&nbsp;</td>
+				<td align="center">&nbsp;</td>
+				<td align="center">&nbsp;</td>
+				<td align="center">&nbsp;</td>
+				<td align="center">&nbsp;</td>
+				<td align="center"><c:out value="${numONE}"/></td>
+			</tr>
+		</c:if>
 		<c:forEach items="${list}" var="cp">
 			<tr >
 				<td align="center"><c:out value="${cp.expect}"/></td>
-				<td align="center"><c:out value="${cp.openTime}"/></td>
 				<td align="center"><c:out value="${cp.openCode}"/></td>
+				<td align="center">&nbsp;</td>
+				<td align="center">&nbsp;</td>
+				<td align="center">&nbsp;</td>
+				<td align="center">&nbsp;</td>
+				<td align="center">&nbsp;</td>
+				<td align="center">&nbsp;</td>
+				<td align="center">&nbsp;</td>
+				<td align="center">&nbsp;</td>
+				<td align="center">&nbsp;</td>
+				<td align="center"></td>
 			</tr>
 		</c:forEach>
-		<tr>
-			<td align="center"><span style="color: red">本期首号码推荐：</span></td>
-			<td colspan="2" align="center"><c:out value="${numONE}"/></td>
-		</tr>
 	</table>
 </div>
 </body>
