@@ -2,6 +2,7 @@ package com.ldm;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -31,9 +32,12 @@ public class caipiaoServlet extends HttpServlet {
 		CaipiaoResultBean crb = JSON.parseObject(jsonResult,CaipiaoResultBean.class);
 		List<CaipiaoBean> list=  crb.getRetData().getData();
 		if(list!=null && list.size()>0){
-			List<Integer> ONElist = CP_bj11x5.getONE(list);
+			Map<String, Object> map =  CP_bj11x5.getONE(list);
+			List<Integer> ONElist = (List<Integer>) map.get("list");
+			MethodBean mb = (MethodBean) map.get("bean");
 			System.out.println(ONElist.toString());
 			request.setAttribute("numONE", ONElist.toString());
+			request.setAttribute("bean", mb);
 		}
 		request.setAttribute("list", list);
 		request.getRequestDispatcher("WEB-INF/CPresult.jsp").forward(request, response);

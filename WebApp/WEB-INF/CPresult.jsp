@@ -8,6 +8,15 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <script type="text/javascript" src="<%=basepath%>/js/jquery-1.6.2.js"></script>
+<script type="text/javascript">
+$(function(){
+	setTimeout(rflash, 30000)
+})
+function rflash(){
+	setTimeout(rflash, 30000);
+	window.location.reload();
+}
+</script>
 <title>结果</title>
 </head>
 <body>
@@ -26,7 +35,8 @@
 				<td align="center">六</td>
 				<td align="center">七</td>
 				<td align="center">八</td>
-				<td align="center">九</td>
+				<td align="center">九</td> 
+				<td align="center">十</td> 
 				<td align="center">认一推荐号码</td>
 			</tr>
 		</thead>
@@ -34,15 +44,16 @@
 			<tr>
 				<td align="center"><c:out value="${list[0].expect+1}"/></td>
 				<td align="center"></td>
-				<td align="center">&nbsp;</td>
-				<td align="center">&nbsp;</td>
-				<td align="center">&nbsp;</td>
-				<td align="center">&nbsp;</td>
-				<td align="center">&nbsp;</td>
-				<td align="center">&nbsp;</td>
-				<td align="center">&nbsp;</td>
-				<td align="center">&nbsp;</td>
-				<td align="center">&nbsp;</td>
+				<td align="center">${bean.meth1}</td>
+				<td align="center">${bean.meth2}</td>
+				<td align="center">${bean.meth3}</td>
+				<td align="center">${bean.meth4}</td>
+				<td align="center">${bean.meth5}</td>
+				<td align="center">${bean.meth6}</td>
+				<td align="center">${bean.meth7}</td>
+				<td align="center">${bean.meth8}</td>
+				<td align="center">${bean.meth9}</td>
+				<td align="center">${bean.meth10}</td>
 				<td align="center"><c:out value="${numONE}"/></td>
 			</tr>
 		</c:if>
@@ -50,6 +61,7 @@
 			<tr >
 				<td align="center"><c:out value="${cp.expect}"/></td>
 				<td align="center"><c:out value="${cp.openCode}"/></td>
+				<td align="center">&nbsp;</td>
 				<td align="center">&nbsp;</td>
 				<td align="center">&nbsp;</td>
 				<td align="center">&nbsp;</td>
