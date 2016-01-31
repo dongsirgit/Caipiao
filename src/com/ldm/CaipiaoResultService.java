@@ -58,6 +58,7 @@ public class CaipiaoResultService {
 			System.out.print(cb.getOpenCode());
 			System.out.println("");
 		}
+		System.out.println(crb.getRetData().getData().size());
 	}
 
 

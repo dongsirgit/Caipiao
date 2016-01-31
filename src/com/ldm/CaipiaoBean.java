@@ -8,19 +8,12 @@ public class CaipiaoBean {
 	private String openCode;
 	private String openTime;
 	private String openTimeStamp;
-	private MethodBean methodBean;
-	private String ONElist;
-	public String getONElist() {
-		return ONElist;
+	private RecordBean recordBean;
+	public RecordBean getRecordBean() {
+		return recordBean;
 	}
-	public void setONElist(String oNElist) {
-		ONElist = oNElist;
-	}
-	public MethodBean getMethodBean() {
-		return methodBean;
-	}
-	public void setMethodBean(MethodBean methodBean) {
-		this.methodBean = methodBean;
+	public void setRecordBean(RecordBean recordBean) {
+		this.recordBean = recordBean;
 	}
 	public String getExpect() {
 		return expect;

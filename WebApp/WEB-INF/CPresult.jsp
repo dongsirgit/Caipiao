@@ -10,7 +10,7 @@
 <script type="text/javascript" src="<%=basepath%>/js/jquery-1.6.2.js"></script>
 <script type="text/javascript">
 $(function(){
-	setTimeout(rflash, 30000)
+	setTimeout(rflash, 30000);
 })
 function rflash(){
 	setTimeout(rflash, 30000);
@@ -61,17 +61,17 @@ function rflash(){
 			<tr >
 				<td align="center"><c:out value="${cp.expect}"/></td>
 				<td align="center"><c:out value="${cp.openCode}"/></td>
-				<td align="center"><c:out value="${records['${cp.expect}'].methodBean.meth1}"/></td>
-				<td align="center"><c:out value="${records['${cp.expect}'].methodBean.meth2}"/></td>
-				<td align="center"><c:out value="${records['${cp.expect}'].methodBean.meth3}"/></td>
-				<td align="center"><c:out value="${records['${cp.expect}'].methodBean.meth4}"/></td>
-				<td align="center"><c:out value="${records['${cp.expect}'].methodBean.meth5}"/></td>
-				<td align="center"><c:out value="${records['${cp.expect}'].methodBean.meth6}"/></td>
-				<td align="center"><c:out value="${records['${cp.expect}'].methodBean.meth7}"/></td>
-				<td align="center"><c:out value="${records['${cp.expect}'].methodBean.meth8}"/></td>
-				<td align="center"><c:out value="${records['${cp.expect}'].methodBean.meth9}"/></td>
-				<td align="center"><c:out value="${records['${cp.expect}'].methodBean.meth10}"/></td>
-				<td align="center"><c:out value="${records['${cp.expect}'].ONElist}"/></td>
+				<td align="center"><c:out value="${cp.recordBean.methodBean.meth1}"/></td>
+				<td align="center"><c:out value="${cp.recordBean.methodBean.meth2}"/></td>
+				<td align="center"><c:out value="${cp.recordBean.methodBean.meth3}"/></td>
+				<td align="center"><c:out value="${cp.recordBean.methodBean.meth4}"/></td>
+				<td align="center"><c:out value="${cp.recordBean.methodBean.meth5}"/></td>
+				<td align="center"><c:out value="${cp.recordBean.methodBean.meth6}"/></td>
+				<td align="center"><c:out value="${cp.recordBean.methodBean.meth7}"/></td>
+				<td align="center"><c:out value="${cp.recordBean.methodBean.meth8}"/></td>
+				<td align="center"><c:out value="${cp.recordBean.methodBean.meth9}"/></td>
+				<td align="center"><c:out value="${cp.recordBean.methodBean.meth10}"/></td>
+				<td align="center"><c:out value="${cp.recordBean.ONElist}"/></td>
 			</tr>
 		</c:forEach>
 	</table>

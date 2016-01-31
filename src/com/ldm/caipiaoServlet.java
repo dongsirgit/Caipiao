@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
+import java.util.TreeSet;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -16,7 +18,7 @@ import com.ldm.util.CP_bj11x5;
 
 public class caipiaoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    private static Map<String, CaipiaoBean> records = new HashMap<String, CaipiaoBean>();
+    private static Map<String, RecordBean> records = new HashMap<String, RecordBean>();
     public caipiaoServlet() {
         super();
     }
@@ -37,16 +39,24 @@ public class caipiaoServlet extends HttpServlet {
 			List<Integer> ONElist = (List<Integer>) map.get("list");
 			MethodBean mb = (MethodBean) map.get("bean");
 			System.out.println(ONElist.toString());
-			CaipiaoBean cb = new CaipiaoBean();
-			cb.setONElist(ONElist.toString());
-			cb.setMethodBean(mb);
-			records.put(list.get(0).getExpect(), cb);
-			if(records.size()>15){
-				records.remove(String.valueOf((Integer.valueOf(list.get(0).getExpect())-15)));
+			RecordBean rb = new RecordBean();
+			rb.setONElist(ONElist.toString());
+			rb.setMethodBean(mb);
+			records.put(String.valueOf(Integer.valueOf(list.get(0).getExpect())+1), rb);
+			if(records.size()>20){
+				Set<Integer> set = new TreeSet<Integer>();
+				 for(String a:map.keySet()){
+					 set.add(Integer.valueOf(a));
+				 }
+				records.remove(set.iterator().next().toString());
 			}
+			System.out.println(records);
+			System.out.println("list长度："+list.size());
 			request.setAttribute("numONE", ONElist.toString());
 			request.setAttribute("bean", mb);
-			request.setAttribute("records", records);
+			for(CaipiaoBean cb:list){
+				cb.setRecordBean(records.get(cb.getExpect()));
+			}
 		}
 		request.setAttribute("list", list);
 		request.getRequestDispatcher("WEB-INF/CPresult.jsp").forward(request, response);
