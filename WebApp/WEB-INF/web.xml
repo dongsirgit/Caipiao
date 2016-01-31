@@ -3,7 +3,7 @@
   <display-name>caipiao</display-name>
   <servlet>
   	<servlet-name>play5in11</servlet-name>
-  	<servlet-class>com.ldm.caipiaoServlet</servlet-class>
+  	<servlet-class>com.ldm.servlet.caipiaoServlet</servlet-class>
   </servlet>
   <servlet-mapping>
   	<servlet-name>play5in11</servlet-name>

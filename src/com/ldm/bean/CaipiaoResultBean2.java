@@ -1,4 +1,4 @@
-package com.ldm;
+package com.ldm.bean;
 
 import java.util.List;
 

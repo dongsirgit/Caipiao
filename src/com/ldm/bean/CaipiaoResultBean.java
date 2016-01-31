@@ -1,4 +1,4 @@
-package com.ldm;
+package com.ldm.bean;
 
 public class CaipiaoResultBean {
 	

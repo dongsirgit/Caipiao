@@ -1,6 +1,4 @@
-package com.ldm;
-
-import java.util.List;
+package com.ldm.bean;
 
 public class CaipiaoBean {
 	

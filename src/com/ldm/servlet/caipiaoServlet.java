@@ -1,4 +1,4 @@
-package com.ldm;
+package com.ldm.servlet;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -13,6 +13,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.alibaba.fastjson.JSON;
+import com.ldm.bean.CaipiaoBean;
+import com.ldm.bean.CaipiaoResultBean;
+import com.ldm.bean.MethodBean;
+import com.ldm.bean.RecordBean;
+import com.ldm.service.CaipiaoResultService;
 import com.ldm.util.CP_bj11x5;
 
 
@@ -36,6 +41,7 @@ public class caipiaoServlet extends HttpServlet {
 		List<CaipiaoBean> list=  crb.getRetData().getData();
 		if(list!=null && list.size()>0){
 			Map<String, Object> map =  CP_bj11x5.getONE(list);
+			@SuppressWarnings("unchecked")
 			List<Integer> ONElist = (List<Integer>) map.get("list");
 			MethodBean mb = (MethodBean) map.get("bean");
 			System.out.println(ONElist.toString());

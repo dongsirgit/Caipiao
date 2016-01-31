@@ -6,8 +6,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.ldm.CaipiaoBean;
-import com.ldm.MethodBean;
+import com.ldm.bean.CaipiaoBean;
+import com.ldm.bean.MethodBean;
 
 public class CP_bj11x5 {
 

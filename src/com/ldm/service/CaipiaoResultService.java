@@ -1,4 +1,4 @@
-package com.ldm;
+package com.ldm.service;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
@@ -7,6 +7,8 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 import com.alibaba.fastjson.JSON;
+import com.ldm.bean.CaipiaoBean;
+import com.ldm.bean.CaipiaoResultBean;
 
 public class CaipiaoResultService {
 	

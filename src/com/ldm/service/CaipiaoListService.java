@@ -1,4 +1,4 @@
-package com.ldm;
+package com.ldm.service;
 
 import java.io.BufferedReader;
 import java.io.InputStream;
@@ -6,6 +6,9 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+/**
+ * 这是个彩票API的DEMO 本项目中未使用
+ */
 public class CaipiaoListService {
 	
 
