@@ -1,7 +1,5 @@
 package com.ldm;
 
-import java.util.List;
-
 public class CaipiaoResultBean {
 	
 	private String errNum;

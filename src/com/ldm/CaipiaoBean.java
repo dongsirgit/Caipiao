@@ -1,11 +1,27 @@
 package com.ldm;
 
+import java.util.List;
+
 public class CaipiaoBean {
 	
 	private String expect;
 	private String openCode;
 	private String openTime;
 	private String openTimeStamp;
+	private MethodBean methodBean;
+	private String ONElist;
+	public String getONElist() {
+		return ONElist;
+	}
+	public void setONElist(String oNElist) {
+		ONElist = oNElist;
+	}
+	public MethodBean getMethodBean() {
+		return methodBean;
+	}
+	public void setMethodBean(MethodBean methodBean) {
+		this.methodBean = methodBean;
+	}
 	public String getExpect() {
 		return expect;
 	}

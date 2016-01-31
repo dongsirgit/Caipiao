@@ -1,6 +1,7 @@
 package com.ldm;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -15,7 +16,7 @@ import com.ldm.util.CP_bj11x5;
 
 public class caipiaoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+    private static Map<String, CaipiaoBean> records = new HashMap<String, CaipiaoBean>();
     public caipiaoServlet() {
         super();
     }
@@ -36,8 +37,16 @@ public class caipiaoServlet extends HttpServlet {
 			List<Integer> ONElist = (List<Integer>) map.get("list");
 			MethodBean mb = (MethodBean) map.get("bean");
 			System.out.println(ONElist.toString());
+			CaipiaoBean cb = new CaipiaoBean();
+			cb.setONElist(ONElist.toString());
+			cb.setMethodBean(mb);
+			records.put(list.get(0).getExpect(), cb);
+			if(records.size()>15){
+				records.remove(String.valueOf((Integer.valueOf(list.get(0).getExpect())-15)));
+			}
 			request.setAttribute("numONE", ONElist.toString());
 			request.setAttribute("bean", mb);
+			request.setAttribute("records", records);
 		}
 		request.setAttribute("list", list);
 		request.getRequestDispatcher("WEB-INF/CPresult.jsp").forward(request, response);

@@ -61,17 +61,17 @@ function rflash(){
 			<tr >
 				<td align="center"><c:out value="${cp.expect}"/></td>
 				<td align="center"><c:out value="${cp.openCode}"/></td>
-				<td align="center">&nbsp;</td>
-				<td align="center">&nbsp;</td>
-				<td align="center">&nbsp;</td>
-				<td align="center">&nbsp;</td>
-				<td align="center">&nbsp;</td>
-				<td align="center">&nbsp;</td>
-				<td align="center">&nbsp;</td>
-				<td align="center">&nbsp;</td>
-				<td align="center">&nbsp;</td>
-				<td align="center">&nbsp;</td>
-				<td align="center"></td>
+				<td align="center"><c:out value="${records['${cp.expect}'].methodBean.meth1}"/></td>
+				<td align="center"><c:out value="${records['${cp.expect}'].methodBean.meth2}"/></td>
+				<td align="center"><c:out value="${records['${cp.expect}'].methodBean.meth3}"/></td>
+				<td align="center"><c:out value="${records['${cp.expect}'].methodBean.meth4}"/></td>
+				<td align="center"><c:out value="${records['${cp.expect}'].methodBean.meth5}"/></td>
+				<td align="center"><c:out value="${records['${cp.expect}'].methodBean.meth6}"/></td>
+				<td align="center"><c:out value="${records['${cp.expect}'].methodBean.meth7}"/></td>
+				<td align="center"><c:out value="${records['${cp.expect}'].methodBean.meth8}"/></td>
+				<td align="center"><c:out value="${records['${cp.expect}'].methodBean.meth9}"/></td>
+				<td align="center"><c:out value="${records['${cp.expect}'].methodBean.meth10}"/></td>
+				<td align="center"><c:out value="${records['${cp.expect}'].ONElist}"/></td>
 			</tr>
 		</c:forEach>
 	</table>
