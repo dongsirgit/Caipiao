@@ -20,23 +20,23 @@ function rflash(){
 <title>北京11选5</title>
 </head>
 <body>
-<div style="width: 800px">
+<div style="width: 900px">
 	<h3 style="color: red;">北京11选5   开奖结果：</h3>
 	<table border="1" cellspacing="0" width="100%">
 		<thead>
 			<tr>
 				<td align="center">期次</td>
 				<td align="center">开奖号码</td>
-				<td align="center">一</td>
-				<td align="center">二</td>
-				<td align="center">三</td>
-				<td align="center">四</td>
-				<td align="center">五</td>
-				<td align="center">六</td>
-				<td align="center">七</td>
-				<td align="center">八</td>
-				<td align="center">九</td> 
-				<td align="center">十</td> 
+				<td align="center" >一</td>
+				<td align="center" >二</td>
+				<td align="center" >三</td>
+				<td align="center" >四</td>
+				<td align="center" >五</td>
+				<td align="center" >六</td>
+				<td align="center" >七</td>
+				<td align="center" >八</td>
+				<td align="center" >九</td> 
+				<td align="center" >十</td> 
 				<td align="center">任一推荐号码</td>
 			</tr>
 		</thead>

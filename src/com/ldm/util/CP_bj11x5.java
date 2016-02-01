@@ -59,11 +59,11 @@ public class CP_bj11x5 {
 				break;
 			}
 		}
-		// 5、向上追10期，那一期的首位 排除(如上期为第14期，就排除第4期的首位数字)
-		if (history20.size() > 10) {
-			result.remove(history20.get(10)[0]);
-			System.out.println("方法五排除：" + history20.get(10)[0]);
-			mb.setMeth5(history20.get(10)[0]);
+		// 5、向上追10期，那一期的首位次位相减 排除(如要预测的期次为第14期，就排除第4期的首位次位相减的数字)
+		if (history20.size() > 9) {
+			result.remove((Integer) Math.abs(history20.get(9)[0]-history20.get(9)[1]));
+			System.out.println("方法五排除：" + (Integer) Math.abs(history20.get(9)[0]-history20.get(9)[1]));
+			mb.setMeth5((Integer) Math.abs(history20.get(9)[0]-history20.get(9)[1]));
 		}
 		// 6、最近5期首位数字权重值 求和 除以5取余数 排除(权重值 ：号码1、2、11
 		// 权重值为1，号码3、4权重值为2，号码5、6权重值为3，号码7、8权重值为4，号码9、10权重值为5) 注：余数为0 排除数字5
@@ -109,28 +109,95 @@ public class CP_bj11x5 {
 				}
 			}
 			Integer mod = count % 5;
-			if (mod == 0)
-				mod = 5;
-			result.remove(mod);
-			System.out.println("方法六排除：" + mod);
-			mb.setMeth6(mod);
+			String meth6 = "";
+			switch(mod){
+			case 0:
+				result.remove(Integer.valueOf(9));
+				result.remove(Integer.valueOf(10));
+				meth6=9+","+10;
+				break;
+			case 1:
+				result.remove(Integer.valueOf(1));
+				result.remove(Integer.valueOf(11));
+				result.remove(Integer.valueOf(2));
+				meth6=1+","+2+","+11;
+				break;
+			case 2:
+				result.remove(Integer.valueOf(3));
+				result.remove(Integer.valueOf(4));
+				meth6=3+","+4;
+				break;
+			case 3:
+				result.remove(Integer.valueOf(5));
+				result.remove(Integer.valueOf(6));
+				meth6=5+","+6;
+				break;
+			case 4:
+				result.remove(Integer.valueOf(7));
+				result.remove(Integer.valueOf(8));
+				meth6=7+","+8;
+				break;
+			}
+			System.out.println("方法六排除：" + meth6);
+			mb.setMeth6(meth6);
 		}
-		// 7、首位减5 排除
-		if ((5 - history20.get(0)[0]) == 0) {
-			result.remove((Integer) 10);
-			System.out.println("方法七排除：" + 10);
-			mb.setMeth7(10);
-		} else {
-			result.remove((Integer) Math.abs(5 - history20.get(0)[0]));
-			System.out.println("方法七排除：" + Math.abs(5 - history20.get(0)[0]));
-			mb.setMeth7(Math.abs(5 - history20.get(0)[0]));
+		// 7、上一期首位对码号：10、5当做1, 1、6、11当作2,2、7当做3,3、8当作4,4、9当作5。 排除
+		String meth7 = "";
+		switch(history20.get(0)[0]){
+		case 1:
+			result.remove(Integer.valueOf(6));
+			meth7=""+6;
+			break;
+		case 2:
+			result.remove(Integer.valueOf(7));
+			meth7=""+7;
+			break;
+		case 3:
+			result.remove(Integer.valueOf(8));
+			meth7=""+8;
+			break;
+		case 4:
+			result.remove(Integer.valueOf(9));
+			meth7=""+9;
+			break;
+		case 5:
+			result.remove(Integer.valueOf(10));
+			meth7=""+10;
+			break;
+		case 6:
+			result.remove(Integer.valueOf(1));
+			result.remove(Integer.valueOf(11));
+			meth7=1+","+11;
+			break;
+		case 7:
+			result.remove(Integer.valueOf(2));
+			meth7=""+2;
+			break;
+		case 8:
+			result.remove(Integer.valueOf(3));
+			meth7=""+3;
+			break;
+		case 9:
+			result.remove(Integer.valueOf(4));
+			meth7=""+4;
+			break;
+		case 10:
+			result.remove(Integer.valueOf(5));
+			meth7=""+5;
+			break;
+		case 11:
+			result.remove(Integer.valueOf(6));
+			meth7=""+6;
+			break;
 		}
+		System.out.println("方法七排除：" + meth7);
+		mb.setMeth7(meth7);
 
 		// 8、上一期 第2个号码减第3个号码 排除
 		result.remove((Integer) Math.abs(history20.get(0)[1] - history20.get(0)[2]));
 		System.out.println("方法八排除：" + Math.abs(history20.get(0)[1] - history20.get(0)[2]));
 		mb.setMeth8(Math.abs(history20.get(0)[1] - history20.get(0)[2]));
-		// 9、上一期首位：0、5当做1, 1、6、11当作2,2、7当做3,3、8当作4,4、9当作5。
+		// 9、上一期首位对码号：10、5当做1, 1、6、11当作2,2、7当做3,3、8当作4,4、9当作5。
 		// 最近5期平均值取余（即首位的代表值相加除5取余） 排除
 		if (history20.size() > 4) {
 			int count1 = 0;
@@ -174,11 +241,37 @@ public class CP_bj11x5 {
 				}
 			}
 			Integer mod1 = count1 % 5;
-			if (mod1 == 0)
-				mod1 = 5;
-			result.remove(mod1);
-			System.out.println("方法九排除：" + mod1);
-			mb.setMeth9(mod1);
+			String meth9 = "";
+			switch(mod1){
+			case 0:
+				result.remove(Integer.valueOf(9));
+				result.remove(Integer.valueOf(4));
+				meth9=4+","+9;
+				break;
+			case 1:
+				result.remove(Integer.valueOf(5));
+				result.remove(Integer.valueOf(10));
+				meth9=5+","+10;
+				break;
+			case 2:
+				result.remove(Integer.valueOf(1));
+				result.remove(Integer.valueOf(6));
+				result.remove(Integer.valueOf(11));
+				meth9=1+","+6+","+11;
+				break;
+			case 3:
+				result.remove(Integer.valueOf(2));
+				result.remove(Integer.valueOf(7));
+				meth9=2+","+7;
+				break;
+			case 4:
+				result.remove(Integer.valueOf(3));
+				result.remove(Integer.valueOf(8));
+				meth9=3+","+8;
+				break;
+			}
+			System.out.println("方法九排除：" + meth9);
+			mb.setMeth9(meth9);
 		}
 		// 10、上期前3个数 最大数减最小数 排除
 		Integer[] temp = { history20.get(0)[0], history20.get(0)[1], history20.get(0)[2] };
