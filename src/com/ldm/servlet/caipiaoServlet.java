@@ -49,7 +49,7 @@ public class caipiaoServlet extends HttpServlet {
 			rb.setONElist(ONElist.toString());
 			rb.setMethodBean(mb);
 			records.put(String.valueOf(Integer.valueOf(list.get(0).getExpect())+1), rb);
-			if(records.size()>20){
+			if(records.size()>21){
 				Set<Integer> set = new TreeSet<Integer>();
 				 for(String a:records.keySet()){
 					 set.add(Integer.valueOf(a));
