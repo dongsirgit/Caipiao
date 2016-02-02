@@ -51,7 +51,7 @@ public class caipiaoServlet extends HttpServlet {
 			records.put(String.valueOf(Integer.valueOf(list.get(0).getExpect())+1), rb);
 			if(records.size()>20){
 				Set<Integer> set = new TreeSet<Integer>();
-				 for(String a:map.keySet()){
+				 for(String a:records.keySet()){
 					 set.add(Integer.valueOf(a));
 				 }
 				records.remove(set.iterator().next().toString());
