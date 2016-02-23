@@ -12,6 +12,13 @@ public class MethodBean {
 	private Integer meth8;
 	private String meth9;
 	private Integer meth10;
+	private Integer meth11;
+	public Integer getMeth11() {
+		return meth11;
+	}
+	public void setMeth11(Integer meth11) {
+		this.meth11 = meth11;
+	}
 	public Integer getMeth1() {
 		return meth1;
 	}

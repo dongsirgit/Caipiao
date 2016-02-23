@@ -279,7 +279,38 @@ public class CP_bj11x5 {
 		result.remove((Integer) (temp[2] - temp[0]));
 		System.out.println("方法十排除： " + (temp[2] - temp[0]));
 		mb.setMeth10((temp[2] - temp[0]));
-
+		// 11、右一：上一期首位右边的号码（1右边为2，2右边为3，以此类推，11右边是1，循环的）称为右一。
+		//向前查找历史数据首位号码为右一的那一期，计算上一期与该期中间间隔的期数（上一期和该期都不算），排除个位（如间隔5期，就排除5;间隔13期，就排除3;间隔0、10、20期，排除10）
+		int rightNum = history20.get(0)[0] + 1;
+		if(history20.get(0)[0] == 11){
+			rightNum = 1;
+		}
+		int num4rem = 0;
+		String flag = null ;
+		for (int j = 1; j < history20.size(); j++) {
+			if (history20.get(j)[0] != rightNum) {
+				num4rem++;
+				continue;
+			}else{
+				flag = "yes";
+				break;
+			}
+		}
+		if("yes".equals(flag)){
+			if(num4rem%10 != 0){
+				Integer num4rem1 = num4rem%10;
+				result.remove(num4rem1);
+				System.out.println("方法十一排除：" + num4rem1);
+				mb.setMeth11(num4rem%10);
+			}else{
+				result.remove((Integer)10);
+				System.out.println("方法十一排除：" + 10);
+				mb.setMeth11(10);
+			}
+		}else{
+			System.out.println("方法十一没有排除号码,历史数据中没有右一号码");
+		}
+		
 		Map<String, Object> map = new HashMap<>();
 		map.put("list", result);
 		map.put("bean", mb);

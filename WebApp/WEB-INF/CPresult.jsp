@@ -37,7 +37,8 @@ function rflash(){
 				<td align="center" >八</td>
 				<td align="center" >九</td> 
 				<td align="center" >十</td> 
-				<td align="center">任一推荐号码</td>
+				<td align="center" >十一</td> 
+				<td align="center">认一推荐号码</td>
 			</tr>
 		</thead>
 		<c:if test="${fn:substring(list[0].expect,8,10) != 85 }">
@@ -54,6 +55,7 @@ function rflash(){
 				<td align="center">${bean.meth8}</td>
 				<td align="center">${bean.meth9}</td>
 				<td align="center">${bean.meth10}</td>
+				<td align="center">${bean.meth11}</td>
 				<td align="center"><c:out value="${numONE}"/></td>
 			</tr>
 		</c:if>
@@ -71,6 +73,7 @@ function rflash(){
 				<td align="center"><c:out value="${cp.recordBean.methodBean.meth8}"/></td>
 				<td align="center"><c:out value="${cp.recordBean.methodBean.meth9}"/></td>
 				<td align="center"><c:out value="${cp.recordBean.methodBean.meth10}"/></td>
+				<td align="center"><c:out value="${cp.recordBean.methodBean.meth11}"/></td>
 				<td align="center"><c:out value="${cp.recordBean.ONElist}"/></td>
 			</tr>
 		</c:forEach>
