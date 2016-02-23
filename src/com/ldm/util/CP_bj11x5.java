@@ -298,12 +298,11 @@ public class CP_bj11x5 {
 		}
 		if("yes".equals(flag)){
 			if(num4rem%10 != 0){
-				Integer num4rem1 = num4rem%10;
-				result.remove(num4rem1);
-				System.out.println("方法十一排除：" + num4rem1);
+				result.remove(Integer.valueOf(num4rem%10));
+				System.out.println("方法十一排除：" + num4rem%10);
 				mb.setMeth11(num4rem%10);
 			}else{
-				result.remove((Integer)10);
+				result.remove(Integer.valueOf(10));
 				System.out.println("方法十一排除：" + 10);
 				mb.setMeth11(10);
 			}
