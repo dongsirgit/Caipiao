@@ -17,11 +17,11 @@ function rflash(){
 	window.location.reload();
 }
 </script>
-<title>北京11选5</title>
+<title>${area}11选5开奖结果</title>
 </head>
 <body>
 <div style="width: 900px">
-	<h3 style="color: red;">北京11选5   开奖结果：</h3>
+	<h3 style="color: red;">${area}11选5   开奖结果：</h3>
 	<table border="1" cellspacing="0" width="100%">
 		<thead>
 			<tr>
@@ -38,7 +38,7 @@ function rflash(){
 				<td align="center" >九</td> 
 				<td align="center" >十</td> 
 				<td align="center" >十一</td> 
-				<td align="center">认一推荐号码</td>
+				<td align="center">任一推荐号码</td>
 			</tr>
 		</thead>
 		<c:if test="${fn:substring(list[0].expect,8,10) != 85 }">

@@ -23,7 +23,8 @@ import com.ldm.util.CP_bj11x5;
 
 public class caipiaoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    private static Map<String, RecordBean> records = new HashMap<String, RecordBean>();
+    private static Map<String, RecordBean> records_bj = new HashMap<String, RecordBean>();
+    private static Map<String, RecordBean> records_sh = new HashMap<String, RecordBean>();
     public caipiaoServlet() {
         super();
     }
@@ -35,7 +36,15 @@ public class caipiaoServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String httpUrl = "http://apis.baidu.com/apistore/lottery/lotteryquery";
-		String httpArg = "lotterycode=bj11x5&recordcnt=20";
+		String cpCode = request.getParameter("cpCode");
+		if("bj11x5".equals(cpCode)){
+			request.setAttribute("area", "北京");
+		}else if("cq11x5".equals(cpCode)){
+			request.setAttribute("area", "重庆");
+		}else if("sh11x5".equals(cpCode)){
+			request.setAttribute("area", "上海");
+		}
+		String httpArg = "lotterycode="+cpCode+"&recordcnt=20";
 		String jsonResult = CaipiaoResultService.request(httpUrl, httpArg);
 		CaipiaoResultBean crb = JSON.parseObject(jsonResult,CaipiaoResultBean.class);
 		List<CaipiaoBean> list=  crb.getRetData().getData();
@@ -48,21 +57,49 @@ public class caipiaoServlet extends HttpServlet {
 			RecordBean rb = new RecordBean();
 			rb.setONElist(ONElist.toString());
 			rb.setMethodBean(mb);
-			records.put(String.valueOf(Integer.valueOf(list.get(0).getExpect())+1), rb);
-			if(records.size()>21){
-				Set<Integer> set = new TreeSet<Integer>();
-				 for(String a:records.keySet()){
-					 set.add(Integer.valueOf(a));
-				 }
-				records.remove(set.iterator().next().toString());
+			if("bj11x5".equals(cpCode)){
+				records_bj.put(String.valueOf(Integer.valueOf(list.get(0).getExpect())+1), rb);
+				if(records_bj.size()>21){
+					Set<Integer> set = new TreeSet<Integer>();
+					 for(String a:records_bj.keySet()){
+						 set.add(Integer.valueOf(a));
+					 }
+					records_bj.remove(set.iterator().next().toString());
+				}
+				System.out.println(records_bj);
+				for(CaipiaoBean cb:list){
+					cb.setRecordBean(records_bj.get(cb.getExpect()));
+				}
+			}else if("sh11x5".equals(cpCode)){
+				records_sh.put(String.valueOf(Integer.valueOf(list.get(0).getExpect())+1), rb);
+				if(records_sh.size()>21){
+					Set<Integer> set = new TreeSet<Integer>();
+					 for(String a:records_sh.keySet()){
+						 set.add(Integer.valueOf(a));
+					 }
+					 records_sh.remove(set.iterator().next().toString());
+				}
+				System.out.println(records_sh);
+				for(CaipiaoBean cb:list){
+					RecordBean tmpRB = records_sh.get(cb.getExpect());
+//					String tmpONE = tmpRB.getONElist();
+//					String[] tmpArr = tmpONE.substring(1, tmpONE.length()-1).split(",");
+//					for(String tmpStr:tmpArr){
+//						if(Integer.parseInt(cb.getOpenCode().substring(0, 2))==Integer.parseInt(tmpStr)){
+//							
+//							break;
+//						}
+//					}
+//					if(tmpONE.contains(Integer.valueOf(cb.getOpenCode().substring(0, 2)).toString())){
+//						
+//					}
+					cb.setRecordBean(tmpRB);
+				}
 			}
-			System.out.println(records);
+			
 			System.out.println("list长度："+list.size());
 			request.setAttribute("numONE", ONElist.toString());
 			request.setAttribute("bean", mb);
-			for(CaipiaoBean cb:list){
-				cb.setRecordBean(records.get(cb.getExpect()));
-			}
 		}
 		request.setAttribute("list", list);
 		request.getRequestDispatcher("WEB-INF/CPresult.jsp").forward(request, response);

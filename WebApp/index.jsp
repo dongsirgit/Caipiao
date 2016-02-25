@@ -9,14 +9,18 @@
 <script type="text/javascript" src="js/jquery-1.6.2.js"></script>
 <script type="text/javascript">
 $(function(){
-	$('#queryCp').click(function(){
-		window.location.href="<%=basepath%>/queryCp";
-	})
+// 	$('#bj11x5').click(function(){
+<%-- 		window.location.href="<%=basepath%>/queryCp?cpCode=bj11x5"; --%>
+// 	});
+// 	$('#cq11x5').click(function(){
+<%-- 		window.location.href="<%=basepath%>/queryCp?cpCode=cq11x5"; --%>
+// 	});
 })
 </script>
 </head>
 <body>
-<input id="queryCp" type="button" value="查询北京11选5开奖结果">
+<a id="bj11x5" href="<%=basepath%>/queryCp?cpCode=bj11x5" target="_blank">查询北京11选5开奖结果</a> |
+<a id="sh11x5" href="<%=basepath%>/queryCp?cpCode=sh11x5" target="_blank">查询上海11选5开奖结果</a>
 
 </body>
 </html>
