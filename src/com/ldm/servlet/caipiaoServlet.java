@@ -39,8 +39,6 @@ public class caipiaoServlet extends HttpServlet {
 		String cpCode = request.getParameter("cpCode");
 		if("bj11x5".equals(cpCode)){
 			request.setAttribute("area", "北京");
-		}else if("cq11x5".equals(cpCode)){
-			request.setAttribute("area", "重庆");
 		}else if("sh11x5".equals(cpCode)){
 			request.setAttribute("area", "上海");
 		}
